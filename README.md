@@ -2,6 +2,10 @@
 
 Libft is a School 42 project. The purpose of this project is to create own C library.
 
+### Compiling
+
+Run `make`, an libft.a should compile directly
+
 ### Libc functions
 
 * [ft_memset](/src/ft_memset.c)
