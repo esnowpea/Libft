@@ -78,7 +78,8 @@ SRC_NAME =	ft_atoi.c \
 			ft_strsub.c \
 			ft_strtrim.c \
 			ft_tolower.c \
-			ft_toupper.c
+			ft_toupper.c \
+			get_next_line.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -88,12 +89,19 @@ OBJ = ./obj/
 
 HEAD = ./inc/
 
+# COLORS
+
+GRN = \033[0;32m
+RED = \033[0;31m
+YEL = \033[1;33m
+END = \033[0m
+
 all: create_obj $(NAME)
 
 $(NAME): $(addprefix $(OBJ), $(OBJ_NAME))
 	@ar rc $@ $^
 	@ranlib $@
-	@echo "\033[0;32mlibft library created.\033[0m"
+	@echo "libft: $(GRN)library created$(END)"
 
 $(OBJ)%.o: $(SRC)%.c
 	@$(CC) $(CFLAGS) -I $(HEAD) -o $@ -c $<
