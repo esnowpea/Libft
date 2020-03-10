@@ -6,7 +6,7 @@
 /*   By: esnowpea <esnowpea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 13:10:33 by esnowpea          #+#    #+#             */
-/*   Updated: 2020/02/26 16:11:31 by esnowpea         ###   ########.fr       */
+/*   Updated: 2020/03/10 10:49:31 by esnowpea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <sys/uio.h>
 # include <limits.h>
 
-# define BUFF_SIZE 9999
+# define BUFF_SIZE 999999
 
 int		get_next_line(const int fd, char **line);
 

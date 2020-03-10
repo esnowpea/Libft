@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esnowpea <esnowpea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ablane <ablane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/27 18:39:03 by esnowpea          #+#    #+#             */
-/*   Updated: 2019/10/02 18:10:26 by esnowpea         ###   ########.fr       */
+/*   Created: 2019/09/25 15:39:41 by ablane            #+#    #+#             */
+/*   Updated: 2020/03/10 11:18:17 by esnowpea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char		*ft_str_add(char **str)
+char        *ft_str_add(char **str)
 {
-	char	*n_ptr;
-	char	*tmp;
-	char	*line;
-	size_t	b;
+	char    *n_ptr;
+	char    *tmp;
+	char    *line;
+	size_t  b;
 
 	n_ptr = ft_strchr(*str, '\n');
 	if (n_ptr)
@@ -30,7 +30,7 @@ char		*ft_str_add(char **str)
 	return (line);
 }
 
-size_t		ft_gnl_del(char **as, size_t n)
+size_t      ft_gnl_del(char **as, size_t n)
 {
 	if (as && *as)
 	{
@@ -40,12 +40,12 @@ size_t		ft_gnl_del(char **as, size_t n)
 	return (n);
 }
 
-int			get_next_line(const int fd, char **line)
+int         get_next_line(const int fd, char **line)
 {
-	static char	*str[OPEN_MAX];
-	char		*tmp;
-	char		buf[BUFF_SIZE + 1];
-	ssize_t		res;
+	static char *str[OPEN_MAX];
+	char        *tmp;
+	char        buf[BUFF_SIZE + 1];
+	ssize_t     res;
 
 	if (fd < 0 || !line || fd > OPEN_MAX || BUFF_SIZE <= 0)
 		return (-1);
