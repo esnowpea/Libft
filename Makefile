@@ -13,81 +13,99 @@
 NAME = libft.a
 
 CC = gcc
+FLAGS = -Wall -Werror -Wextra
 
-CFLAGS = -Wall -Werror -Wextra
+INCLUDES = -I$(HEADERS_DIR)
 
-SRC_NAME =	ft_atoi.c \
-			ft_error.c \
-			ft_count_words.c \
-			ft_bzero.c \
-			ft_del.c \
-			ft_isalnum.c \
-			ft_isalpha.c \
-			ft_isascii.c \
-			ft_isdigit.c \
-			ft_isprint.c \
-			ft_itoa.c \
-			ft_lstadd.c \
-			ft_lstadd_back.c \
-			ft_lstdel.c \
-			ft_lstdel_pos.c \
-			ft_lstdelone.c \
-			ft_lstiter.c \
-			ft_lstmap.c \
-			ft_lstnew.c \
-			ft_memalloc.c \
-			ft_memccpy.c \
-			ft_memchr.c \
-			ft_memcmp.c \
-			ft_memcpy.c \
-			ft_memdel.c \
-			ft_memmove.c \
-			ft_memset.c \
-			ft_putchar.c \
-			ft_putchar_fd.c \
-			ft_putendl.c \
-			ft_putendl_fd.c \
-			ft_putnbr.c \
-			ft_putnbr_fd.c \
-			ft_putstr.c \
-			ft_putstr_fd.c \
-			ft_strcat.c \
-			ft_strchr.c \
-			ft_strclr.c \
-			ft_strcmp.c \
-			ft_strcpy.c \
-			ft_strdel.c \
-			ft_strdup.c \
-			ft_strequ.c \
-			ft_striter.c \
-			ft_striteri.c \
-			ft_strjoin.c \
-			ft_strlcat.c \
-			ft_strlen.c \
-			ft_strmap.c \
-			ft_strmapi.c \
-			ft_strncat.c \
-			ft_strncmp.c \
-			ft_strncpy.c \
-			ft_strnequ.c \
-			ft_strnew.c \
-			ft_strnstr.c \
-			ft_strrchr.c \
-			ft_strsplit.c \
-			ft_strstr.c \
-			ft_strsub.c \
-			ft_strtrim.c \
-			ft_tolower.c \
-			ft_toupper.c \
-			get_next_line.c
+FT_PRINTF_SRC_LIST = ft_printf.c \
+                     parsing.c \
+                     ft_c.c \
+                     ft_s.c \
+                     ft_d.c \
+                     ft_f.c \
+                     ft_e.c \
+                     ft_g.c \
+                     ft_itoa_long.c \
+                     itoa_double.c \
+                     mult_double.c \
+                     rounding.c \
+                     handler_flags.c
 
-OBJ_NAME = $(SRC_NAME:.c=.o)
+SRC_DIR = src/
+SRC_LIST =	ft_atoi.c \
+            ft_error.c \
+            ft_count_words.c \
+            ft_bzero.c \
+            ft_del.c \
+            ft_isalnum.c \
+            ft_isalpha.c \
+            ft_isascii.c \
+            ft_isdigit.c \
+            ft_isprint.c \
+            ft_itoa.c \
+            ft_lstadd.c \
+            ft_lstadd_back.c \
+            ft_lstdel.c \
+            ft_lstdel_pos.c \
+            ft_lstdelone.c \
+            ft_lstiter.c \
+            ft_lstmap.c \
+            ft_lstnew.c \
+            ft_memalloc.c \
+            ft_memccpy.c \
+            ft_memchr.c \
+            ft_memcmp.c \
+            ft_memcpy.c \
+            ft_memdel.c \
+            ft_memmove.c \
+            ft_memset.c \
+            ft_putchar.c \
+            ft_putchar_fd.c \
+            ft_putendl.c \
+            ft_putendl_fd.c \
+            ft_putnbr.c \
+            ft_putnbr_fd.c \
+            ft_putstr.c \
+            ft_putstr_fd.c \
+            ft_strcat.c \
+            ft_strchr.c \
+            ft_strclr.c \
+            ft_strcmp.c \
+            ft_strcpy.c \
+            ft_strdel.c \
+            ft_strdup.c \
+            ft_strequ.c \
+            ft_striter.c \
+            ft_striteri.c \
+            ft_strjoin.c \
+            ft_strlcat.c \
+            ft_strlen.c \
+            ft_strmap.c \
+            ft_strmapi.c \
+            ft_strncat.c \
+            ft_strncmp.c \
+            ft_strncpy.c \
+            ft_strnequ.c \
+            ft_strnew.c \
+            ft_strnstr.c \
+            ft_strrchr.c \
+            ft_strsplit.c \
+            ft_strstr.c \
+            ft_strsub.c \
+            ft_strtrim.c \
+            ft_tolower.c \
+            ft_toupper.c \
+            get_next_line.c \
+            $(FT_PRINTF_SRC_LIST)
+SRC = $(addprefix $(SRC_DIR), $(SRC_LIST))
 
-SRC = ./src/
+OBJ_DIR = obj/
+OBJ_LIST = $(patsubst %.c, %.o, $(SRC_LIST))
+OBJ	= $(addprefix $(OBJ_DIR), $(OBJ_LIST))
 
-OBJ = ./obj/
-
-HEAD = ./inc/
+HEADERS_LIST = libft.h
+HEADERS_DIR = ./inc/
+HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 
 # COLORS
 
@@ -96,24 +114,28 @@ RED = \033[0;31m
 YEL = \033[1;33m
 END = \033[0m
 
-all: create_obj $(NAME)
+all: $(NAME)
 
-$(NAME): $(addprefix $(OBJ), $(OBJ_NAME))
-	@ar rc $@ $^
-	@ranlib $@
-	@echo "libft: $(GRN)library created$(END)"
+$(NAME): $(OBJ_DIR) $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo "\n$(NAME): $(GRN)library created$(END)"
 
-$(OBJ)%.o: $(SRC)%.c
-	@$(CC) $(CFLAGS) -I $(HEAD) -o $@ -c $<
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GRN).$(END)\c"
 
-create_obj:
-	@mkdir -p $(OBJ)
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+	@echo "$(NAME): $(GRN)$(OBJ_DIR) created$(END)"
 
 clean:
-	@rm -rf $(addprefix $(OBJ), $(OBJ_NAME))
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJ_DIR)
+	@echo "$(NAME): $(RED)$(OBJ_DIR) deleted$(END)"
+	@echo "$(NAME): $(RED)*.o files deleted$(END)"
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo "$(NAME): $(RED)$(NAME) deleted$(END)"
 
 re: fclean all
