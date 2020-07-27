@@ -82,3 +82,8 @@ Run `make`, an libft.a should compile directly
 * [ft_lstadd_back](/src/ft_lstadd_back.c)
 * [ft_lstdel_pos](/src/ft_lstdel_pos.c)
 * [ft_del](/src/ft_del.c)
+
+**Added after**
+
+* [get_next_line](/src/get_next_line.c)
+* [ft_ptintf](/src/ft_ptintf.c)
