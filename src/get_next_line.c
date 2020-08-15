@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char		*ft_str_add(char **str)
+static char			*ft_str_add(char **str)
 {
 	char	*n_ptr;
 	char	*tmp;
@@ -30,7 +30,7 @@ char		*ft_str_add(char **str)
 	return (line);
 }
 
-size_t		ft_gnl_del(char **as, size_t n)
+static size_t		ft_gnl_del(char **as, size_t n)
 {
 	if (as && *as)
 	{
@@ -40,7 +40,7 @@ size_t		ft_gnl_del(char **as, size_t n)
 	return (n);
 }
 
-int			get_next_line(const int fd, char **line)
+int					get_next_line(const int fd, char **line)
 {
 	static char	*str[OPEN_MAX];
 	char		*tmp;
