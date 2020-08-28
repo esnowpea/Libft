@@ -6,7 +6,7 @@
 /*   By: esnowpea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 15:22:49 by esnowpea          #+#    #+#             */
-/*   Updated: 2020/07/27 16:10:37 by esnowpea         ###   ########.fr       */
+/*   Updated: 2020/08/28 13:14:26 by esnowpea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_bilist
+{
+	void			*content;
+	size_t			content_size;
+	struct s_bilist	*next;
+	struct s_bilist	*prev;
+}					t_bilist;
 
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
@@ -79,6 +87,12 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+
+t_bilist			*ft_bilstnew(void const *content, size_t content_size);
+void				ft_bilstdelone(t_bilist **alst, void (*del)(void*, size_t));
+void				ft_bilstdel(t_bilist **alst, void (*del)(void*, size_t));
+void				ft_bilstadd(t_bilist **alst, t_bilist *new);
+void				ft_bilstadd_back(t_bilist **alst, t_bilist *new);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));

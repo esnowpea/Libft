@@ -10,7 +10,9 @@
 #                                                                              #
 #******************************************************************************#
 
-NAME = libft.a
+NAME = Lib_FT
+NAME_EXEC = libft.a
+TABS = \t\t
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
@@ -43,6 +45,11 @@ SRC_LIST =	ft_atoi.c \
             ft_isdigit.c \
             ft_isprint.c \
             ft_itoa.c \
+            ft_bilstadd.c \
+            ft_bilstadd_back.c \
+            ft_bilstdel.c \
+            ft_bilstdelone.c \
+            ft_bilstnew.c \
             ft_lstadd.c \
             ft_lstadd_back.c \
             ft_lstdel.c \
@@ -114,12 +121,12 @@ RED = \033[0;31m
 YEL = \033[1;33m
 END = \033[0m
 
-all: $(NAME)
+all: $(NAME_EXEC)
 
-$(NAME): $(OBJ_DIR) $(OBJ)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-	@echo "\n$(NAME): $(GRN)library created$(END)"
+$(NAME_EXEC): $(OBJ_DIR) $(OBJ)
+	@ar rc $(NAME_EXEC) $(OBJ)
+	@ranlib $(NAME_EXEC)
+	@echo "\n$(NAME):$(TABS)$(GRN)library created$(END)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
@@ -127,15 +134,19 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@echo "$(NAME): $(GRN)$(OBJ_DIR) created$(END)"
+	@echo "$(NAME):$(TABS)$(GRN)$(OBJ_DIR) created$(END)"
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "$(NAME): $(RED)$(OBJ_DIR) deleted$(END)"
-	@echo "$(NAME): $(RED)*.o files deleted$(END)"
+ifneq ($(strip $(wildcard $(OBJ))),)
+	@echo "$(NAME):$(TABS)$(RED)*.o files deleted$(END)"
+	@echo "$(NAME):$(TABS)$(RED)$(OBJ_DIR) deleted$(END)"
+endif
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "$(NAME): $(RED)$(NAME) deleted$(END)"
+	@rm -f $(NAME_EXEC)
+ifneq ($(strip $(wildcard $(NAME_EXEC))),)
+	@echo "$(NAME):$(TABS)$(RED)$(NAME_EXEC) deleted$(END)"
+endif
 
 re: fclean all
