@@ -19,20 +19,6 @@ FLAGS = -Wall -Werror -Wextra
 
 INCLUDES = -I$(HEADERS_DIR)
 
-FT_PRINTF_SRC_LIST = ft_printf.c \
-                     parsing.c \
-                     ft_c.c \
-                     ft_s.c \
-                     ft_d.c \
-                     ft_f.c \
-                     ft_e.c \
-                     ft_g.c \
-                     ft_itoa_long.c \
-                     itoa_double.c \
-                     mult_double.c \
-                     rounding.c \
-                     handler_flags.c
-
 SRC_DIR = src/
 SRC_LIST =	ft_atoi.c \
             ft_error.c \
@@ -102,8 +88,7 @@ SRC_LIST =	ft_atoi.c \
             ft_strtrim.c \
             ft_tolower.c \
             ft_toupper.c \
-            get_next_line.c \
-            $(FT_PRINTF_SRC_LIST)
+            get_next_line.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_LIST))
 
 OBJ_DIR = obj/

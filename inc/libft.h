@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
-# include "ft_printf.h"
+# include "../../Libftprintf/inc/ft_printf.h"
 # include "get_next_line.h"
 
 typedef struct		s_list
