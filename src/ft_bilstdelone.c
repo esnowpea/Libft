@@ -14,10 +14,14 @@
 
 void	ft_bilstdelone(t_bilist **alst, void (*del)(void*, size_t))
 {
+	t_bilist	*tmp;
+
 	if (!alst || !*alst || !del)
 		return ;
-	(*alst)->next->prev = 0;
-	(*del)((*alst)->content, (*alst)->content_size);
-	free(*alst);
-	*alst = NULL;
+	tmp = *alst;
+	*alst = tmp->next;
+	if (tmp->next)
+		tmp->next->prev = 0;
+	(*del)(tmp->content, tmp->content_size);
+	free(tmp);
 }

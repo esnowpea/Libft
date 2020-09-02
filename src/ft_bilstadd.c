@@ -17,6 +17,7 @@ void	ft_bilstadd(t_bilist **alst, t_bilist *new)
 	if (!alst || !new)
 		return ;
 	new->next = *alst;
-	(*alst)->prev = new;
+	if (*alst)
+		(*alst)->prev = new;
 	*alst = new;
 }
