@@ -36,6 +36,7 @@ SRC_LIST =	ft_atoi.c \
             ft_bilstdel.c \
             ft_bilstdelone.c \
             ft_bilstnew.c \
+            ft_bilstsort.c \
             ft_lstadd.c \
             ft_lstadd_back.c \
             ft_lstdel.c \
