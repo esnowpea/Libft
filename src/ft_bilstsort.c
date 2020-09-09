@@ -12,15 +12,15 @@
 
 #include "libft.h"
 
-int		ft_bilstlength(t_bilist *alst)
+int		ft_bilstlength(t_bilist **alst)
 {
 	t_bilist	*tmp;
 	int			i;
 
 	i = 0;
-	if (alst)
+	if (alst && *alst)
 	{
-		tmp = alst;
+		tmp = *alst;
 		while (tmp->prev)
 			tmp = tmp->prev;
 		while (tmp)

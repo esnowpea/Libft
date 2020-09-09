@@ -37,6 +37,8 @@ void	ft_bilstdelone_back(t_bilist **alst, void (*del)(void*, size_t))
 		tmp = tmp->next;
 	if (tmp->prev)
 		tmp->prev->next = 0;
+	if (!tmp->next && !tmp->prev)
+		*alst = 0;
 	(*del)(tmp->content, tmp->content_size);
 	free(tmp);
 }
