@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bilistnew.c                                     :+:      :+:    :+:   */
+/*   ft_bilstdup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esnowpea <esnowpea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 13:15:16 by esnowpea          #+#    #+#             */
-/*   Updated: 2020/08/28 13:15:16 by esnowpea         ###   ########.fr       */
+/*   Created: 2020/09/18 13:36:38 by esnowpea          #+#    #+#             */
+/*   Updated: 2020/09/18 13:36:38 by esnowpea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_bilist	*ft_bilstnew(void const *content, size_t content_size)
+t_bilist	*ft_bilstdup(t_bilist *src)
 {
-	t_bilist	*bilist;
+	t_bilist *list;
+	t_bilist *tmp;
 
-	bilist = (t_bilist*)ft_memalloc(sizeof(t_bilist));
-	if (!bilist)
-		return (0);
-	if (!content)
-		return (bilist);
-	bilist->content = (void*)content;
-	bilist->content_size = content_size;
-	return (bilist);
+	list = 0;
+	tmp = src;
+	while (tmp)
+	{
+		ft_bilstadd_back(&list, ft_bilstnew(tmp->content, tmp->content_size));
+		tmp = tmp->next;
+	}
+	return (list);
 }
