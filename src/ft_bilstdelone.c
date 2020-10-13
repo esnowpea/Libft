@@ -29,20 +29,3 @@ void	ft_bilstdelone(t_bilist **alst, void (*del)(void*, size_t))
 	while ((*alst) && (*alst)->prev)
 		*alst = (*alst)->prev;
 }
-
-void	ft_bilstdelone_back(t_bilist **alst, void (*del)(void*, size_t))
-{
-	t_bilist	*tmp;
-
-	if (!alst || !*alst || !del)
-		return ;
-	tmp = *alst;
-	while (tmp->next)
-		tmp = tmp->next;
-	if (tmp->prev)
-		tmp->prev->next = 0;
-	if (!tmp->next && !tmp->prev)
-		*alst = 0;
-	(*del)(tmp->content, tmp->content_size);
-	free(tmp);
-}
