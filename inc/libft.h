@@ -96,7 +96,7 @@ void				ft_bilstadd(t_bilist **alst, t_bilist *new);
 void				ft_bilstadd_back(t_bilist **alst, t_bilist *new);
 void				ft_bilstsort(t_bilist **alst, int (*cmp)(void*, void*));
 void				ft_bilstswap(t_bilist *a, t_bilist *b);
-int					ft_bilstlength(t_bilist **alst);
+int					ft_bilstlength(t_bilist *alst);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
