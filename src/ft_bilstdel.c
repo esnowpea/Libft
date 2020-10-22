@@ -20,6 +20,8 @@ void	ft_bilstdel(t_bilist **alst, void (*del)(void*, size_t))
 	if (!alst || !(*alst) || !del)
 		return ;
 	tmp = *alst;
+	while (tmp->prev)
+		tmp = tmp->prev;
 	next = tmp->next;
 	while (tmp)
 	{
