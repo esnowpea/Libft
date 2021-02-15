@@ -25,13 +25,13 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_bilist
+typedef struct		s_dllist
 {
 	void			*content;
 	size_t			content_size;
-	struct s_bilist	*next;
-	struct s_bilist	*prev;
-}					t_bilist;
+	struct s_dllist	*next;
+	struct s_dllist	*prev;
+}					t_dllist;
 
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
@@ -87,14 +87,14 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
-t_bilist			*ft_bilstnew(void const *content, size_t content_size);
-void				ft_bilstdelone(t_bilist **alst, void (*del)(void*, size_t));
-void				ft_bilstdel(t_bilist **alst, void (*del)(void*, size_t));
-void				ft_bilstadd(t_bilist **alst, t_bilist *new);
-void				ft_bilstadd_back(t_bilist **alst, t_bilist *new);
-void				ft_bilstsort(t_bilist **alst, int (*cmp)(void*, void*));
-void				ft_bilstswap(t_bilist *a, t_bilist *b);
-int					ft_bilstlength(t_bilist *alst);
+t_dllist			*ft_dllstnew(void const *content, size_t content_size);
+void				ft_dllstdelone(t_dllist **alst, void (*del)(void*, size_t));
+void				ft_dllstdel(t_dllist **alst, void (*del)(void*, size_t));
+void				ft_dllstadd(t_dllist **alst, t_dllist *new);
+void				ft_dllstadd_back(t_dllist **alst, t_dllist *new);
+void				ft_dllstsort(t_dllist **alst, int (*cmp)(void*, void*));
+void				ft_dllstswap(t_dllist *a, t_dllist *b);
+int					ft_dllstlength(t_dllist *alst);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));

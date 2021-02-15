@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bilstadd.c                                      :+:      :+:    :+:   */
+/*   ft_dllstadd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esnowpea <esnowpea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,11 +12,16 @@
 
 #include "libft.h"
 
-void	ft_bilstadd(t_bilist **alst, t_bilist *new)
+void	ft_dllstadd(t_dllist **alst, t_dllist *new)
 {
 	if (!alst || !new)
 		return ;
 	new->next = *alst;
+	if (*alst && (*alst)->prev)
+	{
+		(*alst)->prev->next = new;
+		new->prev = (*alst)->prev;
+	}
 	if (*alst)
 		(*alst)->prev = new;
 	*alst = new;

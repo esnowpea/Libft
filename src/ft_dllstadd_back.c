@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bilstdelone.c                                   :+:      :+:    :+:   */
+/*   ft_dllstadd_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esnowpea <esnowpea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 13:20:23 by esnowpea          #+#    #+#             */
-/*   Updated: 2020/10/07 19:02:27 by esnowpea         ###   ########.fr       */
+/*   Created: 2020/08/28 13:26:57 by esnowpea          #+#    #+#             */
+/*   Updated: 2020/08/28 14:43:33 by esnowpea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bilstdelone(t_bilist **alst, void (*del)(void*, size_t))
+void	ft_dllstadd_back(t_dllist **alst, t_dllist *new)
 {
-	t_bilist	*tmp;
+	t_dllist	*tmp;
 
-	if (!alst || !*alst || !del)
+	if (!alst || !new)
 		return ;
+	if (!(*alst))
+	{
+		*alst = new;
+		return ;
+	}
 	tmp = *alst;
-	*alst = tmp->next ? tmp->next : tmp->prev;
-	if (tmp->prev)
-		tmp->prev->next = tmp->next;
-	if (tmp->next)
-		tmp->next->prev = tmp->prev;
-	(*del)(tmp->content, tmp->content_size);
-	free(tmp);
-	while ((*alst) && (*alst)->prev)
-		*alst = (*alst)->prev;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	new->prev = tmp;
 }

@@ -12,47 +12,36 @@
 
 #include "libft.h"
 
-#define MAX_LINT 9223372036854775807
-
-static int	ft_skip(const char *str, int *minus)
+static int		skip_spaces(const char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
-	*minus = 0;
 	while ((str[i] == '\n') || (str[i] == '\t') || (str[i] == '\v') || \
 	(str[i] == ' ') || (str[i] == '\f') || (str[i] == '\r'))
-		i++;
-	if (str[i] == '-')
-		*minus = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
+		++i;
 	return (i);
 }
 
-int			ft_atoi(const char *str)
+int				ft_atoi(const char *str)
 {
-	size_t					i;
-	int						minus;
-	long int				a;
-	unsigned long long int	kostyl;
+	int		i;
+	int		n;
+	int		sign;
 
-	a = 0;
-	kostyl = 0;
-	i = ft_skip(str, &minus);
-	while (i < (ft_strlen(str)) && ((str[i] >= '0') && (str[i] <= '9')))
+	n = 0;
+	sign = 1;
+	i = skip_spaces(str);
+	if (str[i] == '+' || str[i] == '-')
 	{
-		a = a * 10 + str[i] - '0';
-		if (kostyl <= MAX_LINT)
-			kostyl = kostyl * 10 + str[i] - '0';
+		sign = (str[i] == '+') ? 1 : -1;
 		i++;
 	}
-	if (kostyl > MAX_LINT && minus == 0)
-		return (-1);
-	if (kostyl > MAX_LINT && minus == 1)
-		return (0);
-	if (minus == 1)
-		return ((int)(-a));
-	else
-		return ((int)a);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		n = n * 10 + (str[i] - '0');
+		++i;
+	}
+	n = sign * n;
+	return (n);
 }

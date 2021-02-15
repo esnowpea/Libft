@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bilstsort.c                                     :+:      :+:    :+:   */
+/*   ft_dllstlength.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esnowpea <esnowpea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/04 15:29:50 by esnowpea          #+#    #+#             */
-/*   Updated: 2020/09/04 16:28:05 by esnowpea         ###   ########.fr       */
+/*   Created: 2020/10/13 15:45:22 by esnowpea          #+#    #+#             */
+/*   Updated: 2020/10/13 15:45:22 by esnowpea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bilstsort(t_bilist **alst, int (*cmp)(void*, void*))
+int		ft_dllstlength(t_dllist *alst)
 {
-	t_bilist	*tmp;
+	t_dllist	*tmp;
+	int			i;
 
-	if (alst && *alst)
+	i = 0;
+	if (alst)
 	{
-		tmp = *alst;
+		tmp = alst;
 		while (tmp->prev)
 			tmp = tmp->prev;
-		while (tmp->next)
+		while (tmp)
 		{
-			if (cmp(tmp->content, tmp->next->content))
-			{
-				ft_bilstswap(tmp, tmp->next);
-				while (tmp->prev)
-					tmp = tmp->prev;
-				continue;
-			}
+			i++;
 			tmp = tmp->next;
 		}
-		while (tmp->prev)
-			tmp = tmp->prev;
-		*alst = tmp;
 	}
+	return (i);
 }
