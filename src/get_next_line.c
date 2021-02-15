@@ -42,12 +42,12 @@ static size_t		ft_gnl_del(char **as, size_t n)
 
 int					get_next_line(const int fd, char **line)
 {
-	static char	*str[OPEN_MAX];
+	static char	*str[16];
 	char		*tmp;
 	char		buf[BUFF_SIZE + 1];
 	ssize_t		res;
 
-	if (fd < 0 || !line || fd > OPEN_MAX || BUFF_SIZE <= 0)
+	if (fd < 0 || !line || fd > 16 || BUFF_SIZE <= 0)
 		return (-1);
 	if (!str[fd])
 		str[fd] = ft_strnew(0);

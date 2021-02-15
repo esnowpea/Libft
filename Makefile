@@ -31,14 +31,14 @@ SRC_LIST =	ft_atoi.c \
             ft_isdigit.c \
             ft_isprint.c \
             ft_itoa.c \
-            ft_bilstadd.c \
-            ft_bilstadd_back.c \
-            ft_bilstdel.c \
-            ft_bilstdelone.c \
-            ft_bilstnew.c \
-            ft_bilstsort.c \
-            ft_bilstswap.c \
-            ft_bilstlength.c \
+            ft_dllstadd.c \
+            ft_dllstadd_back.c \
+            ft_dllstdel.c \
+            ft_dllstdelone.c \
+            ft_dllstnew.c \
+            ft_dllstsort.c \
+            ft_dllstswap.c \
+            ft_dllstlength.c \
             ft_lstadd.c \
             ft_lstadd_back.c \
             ft_lstdel.c \
@@ -108,6 +108,8 @@ GRN = \033[0;32m
 RED = \033[0;31m
 YEL = \033[1;33m
 END = \033[0m
+
+.PHONY: all clean fclean re
 
 all: $(NAME_EXEC)
 

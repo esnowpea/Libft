@@ -18,7 +18,7 @@
 # include <sys/uio.h>
 # include <limits.h>
 
-# define BUFF_SIZE 999999
+# define BUFF_SIZE 9999
 
 int		get_next_line(const int fd, char **line);
 
